@@ -7,7 +7,7 @@ ruby "3.2.2"
 #gem externaß
 gem 'bcrypt'
 
-
+gem 'devise'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
