@@ -1,24 +1,4 @@
-# README
+# Sistema de Registro e Login em Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este é um projeto que implementa um sistema de registro de usuários e login com o uso do Ruby on Rails. Ele fornece uma estrutura básica para que você possa criar um sistema de autenticação em seu aplicativo web.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
