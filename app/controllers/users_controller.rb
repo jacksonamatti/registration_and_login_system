@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorize, except: [:new, :create]
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 def index
 @users = User.all  # @users is an instance variable that will be available to the view (index) and all other views in this
 end
@@ -6,6 +8,7 @@ end
   @user = User.find(params[:id])
 
   end
+
   def new
     @user = User.new
   end
@@ -13,13 +16,32 @@ end
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: "Usuário foi criado com sucesso!"
-      # Tire o método de comentário quando criar o helper.
-      # Usuário depois de cadastrar-se acessa o sistema automaticamente sig_in(@user)
+      redirect_to @user
     else
-      render action: :new # Corrigindo a linha para renderizar a ação :new
+      render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    sign_out
+    redirect_to root_path, status: :see_other
+  end
+
 
   private
   def user_params
